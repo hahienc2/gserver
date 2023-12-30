@@ -49,7 +49,11 @@ function myFunction(p1, p2) {
 io.on('connection', function (socket) {
     console.log("CO Nnguoi ket noi " + socket.id);
     socket.on("available-room", function (data) {
-        socket.emit("available-room", rooms);
+        if(rooms.length >= 1 && rooms[0].users.length >=2){
+            rooms = [];
+        }
+         socket.emit("available-room", rooms);
+
     })
 
     socket.on("create-room", function (data) {
@@ -93,8 +97,244 @@ io.on('connection', function (socket) {
     })
 
     socket.on("start-room", function (res) {
-       
-        io.in(rooms[0].roomId).emit('start-room',data);
+       let dataz = {
+  "turn": 0,
+  "userID": "Rh35TavfT",
+  "action": "before",
+  "mess": {
+    "users": [
+      {
+        "id": rooms[0].users[0],
+        "cards": [
+          {
+            "type": 2,
+            "value": 13
+          },
+          {
+            "type": 4,
+            "value": 7
+          },
+          {
+            "type": 4,
+            "value": 11
+          },
+          {
+            "type": 4,
+            "value": 12
+          },
+          {
+            "type": 3,
+            "value": 13
+          },
+          {
+            "type": 4,
+            "value": 10
+          },
+          {
+            "type": 2,
+            "value": 6
+          },
+          {
+            "type": 1,
+            "value": 8
+          },
+          {
+            "type": 2,
+            "value": 8
+          }
+        ],
+        "turn": 0,
+        "cardTurn": [],
+        "pairs": []
+      },
+      {
+        "id": rooms[0].users[1],
+        "cards": [
+          {
+            "type": 3,
+            "value": 5
+          },
+          {
+            "type": 1,
+            "value": 10
+          },
+          {
+            "type": 3,
+            "value": 4
+          },
+          {
+            "type": 1,
+            "value": 11
+          },
+          {
+            "type": 1,
+            "value": 7
+          },
+          {
+            "type": 4,
+            "value": 5
+          },
+          {
+            "type": 1,
+            "value": 4
+          },
+          {
+            "type": 4,
+            "value": 1
+          },
+          {
+            "type": 3,
+            "value": 9
+          }
+        ],
+        "turn": 1,
+        "cardTurn": [],
+        "pairs": []
+      }
+    ],
+    "turns": 0,
+    "pool": [
+      {
+        "type": 4,
+        "value": 3
+      },
+      {
+        "type": 3,
+        "value": 6
+      },
+      {
+        "type": 1,
+        "value": 13
+      },
+      {
+        "type": 4,
+        "value": 2
+      },
+      {
+        "type": 3,
+        "value": 10
+      },
+      {
+        "type": 1,
+        "value": 1
+      },
+      {
+        "type": 4,
+        "value": 13
+      },
+      {
+        "type": 2,
+        "value": 3
+      },
+      {
+        "type": 2,
+        "value": 5
+      },
+      {
+        "type": 2,
+        "value": 2
+      },
+      {
+        "type": 1,
+        "value": 9
+      },
+      {
+        "type": 1,
+        "value": 3
+      },
+      {
+        "type": 3,
+        "value": 1
+      },
+      {
+        "type": 3,
+        "value": 12
+      },
+      {
+        "type": 4,
+        "value": 8
+      },
+      {
+        "type": 1,
+        "value": 2
+      },
+      {
+        "type": 4,
+        "value": 9
+      },
+      {
+        "type": 2,
+        "value": 4
+      },
+      {
+        "type": 1,
+        "value": 5
+      },
+      {
+        "type": 3,
+        "value": 11
+      },
+      {
+        "type": 1,
+        "value": 12
+      },
+      {
+        "type": 4,
+        "value": 4
+      },
+      {
+        "type": 3,
+        "value": 7
+      },
+      {
+        "type": 2,
+        "value": 9
+      },
+      {
+        "type": 3,
+        "value": 8
+      },
+      {
+        "type": 2,
+        "value": 11
+      },
+      {
+        "type": 2,
+        "value": 1
+      },
+      {
+        "type": 2,
+        "value": 12
+      },
+      {
+        "type": 4,
+        "value": 6
+      },
+      {
+        "type": 2,
+        "value": 7
+      },
+      {
+        "type": 3,
+        "value": 2
+      },
+      {
+        "type": 3,
+        "value": 3
+      },
+      {
+        "type": 1,
+        "value": 6
+      },
+      {
+        "type": 2,
+        "value": 10
+      }
+    ],
+    "action": "before"
+  }
+}
+        io.in(rooms[0].roomId).emit('start-room',dataz);
     })
 
     socket.on("tao-room", function (data) {
