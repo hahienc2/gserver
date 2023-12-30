@@ -7,12 +7,14 @@ const io = new Server(httpServer, {
   cors: {
         origin: 'http://localhost:7456',
         origin: 'http://localhost',
-        origin: 'http://192.168.1.10:7457'
+        origin: 'http://192.168.1.10:7456'
 
   }
 });
 
 httpServer.listen(3000);
+
+var rooms =[];
 
 var roomsGame = [];
 
@@ -46,12 +48,62 @@ function myFunction(p1, p2) {
 }
 io.on('connection', function (socket) {
     console.log("CO Nnguoi ket noi " + socket.id);
+    socket.on("available-room", function (data) {
+        socket.emit("available-room", rooms);
+    })
+
+    socket.on("create-room", function (data) {
+        if(rooms.length < 1){
+            let ran = Math.floor(Math.random() * 10) + "" + (Math.random() + 1).toString(36).substring(7);
+            socket.join(ran);
+            let _socketid = socket.id;
+
+
+            let _roomy = {
+            clients: 1,
+            createdAt: null,
+            maxClients: null,
+            metadata: {
+                user: {
+                    id: _socketid,
+                },
+                private: 0
+                },
+            name: "cardGame",
+            processId: null,
+            roomId: ran,
+            users:[]
+        }
+
+         _roomy.users.push(_socketid);
+        rooms.push(_roomy);
+                    let _roomx = {hasJoined: true,id : ran, socid : _socketid ,users : _roomy.users};
+
+        socket.emit("create-room", _roomx);
+        } else{
+            socket.join(rooms[0].roomId);
+            let _socketid = socket.id;
+            rooms[0].users.push(_socketid);
+            let _roomx = {hasJoined: true,id : rooms[0].roomId, socid : _socketid ,users : rooms[0].users};
+
+             let _ro = {users : rooms[0].users};
+            socket.emit("create-room", _roomx);
+            io.in(rooms[0].roomId).emit("create-room-update", _ro);
+        }
+    })
+
+    socket.on("start-room", function (res) {
+       
+        io.in(rooms[0].roomId).emit('start-room',data);
+    })
 
     socket.on("tao-room", function (data) {
         let checkroom = romfunction.checkRooms();
         if (checkroom[0]) {
             let idz = checkroom[2];
+
             socket.join(checkroom[1].phong);
+
             socket.phong = checkroom[1].phong;
             roomsGame[idz].id.push(socket.id);
             let returnRoom = roomsGame[idz];
