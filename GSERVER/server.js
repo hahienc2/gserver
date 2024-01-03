@@ -7,7 +7,8 @@ const io = new Server(httpServer, {
   cors: {
     origin: 'http://localhost:7456',
     origin: 'http://localhost',
-    origin: 'http://192.168.1.15:7456'
+    origin: 'http://192.168.1.15:7456',
+    origin: 'http://192.168.1.10:7456'
 
   }
 });
@@ -45,7 +46,7 @@ var romfunction = {
   roomidx(roomid) {
     let _plcard = playcard;
     let _roomcard = _plcard.mess.users;
-    console.log(roomid);
+   // console.log(roomid);
     for (let i = 0; i < _roomcard.length; i++) {
       if (_roomcard[i].id == roomid) return i;
     }
@@ -358,8 +359,7 @@ io.on('connection', function (socket) {
   })
 
   socket.on("send-card", function (data) {
-    //luot 1
-    //user 1
+
     let a = {
       action: 'after',
       type: 'action',
@@ -370,19 +370,6 @@ io.on('connection', function (socket) {
       type: 'action',
       turn: 1,
     }
-    //user 2
-    let a1 = {
-      action: 'after',
-      type: 'action',
-      turn: 2
-    } // boc bai
-    let b1 = {
-      action: 'before',
-      type: 'action',
-      turn: 3,
-    }
-    // obj.type = Math.floor(_cardNumber / 100);
-    //obj.value = _cardNumber % 100;
 
     let _socketid = socket.id;
     let _roomsid = socket.roomsid;
@@ -434,77 +421,30 @@ io.on('connection', function (socket) {
 
   })
 
-  socket.on("getMatch", function (data) {
+  socket.on("match", function (data) {
     let _socketid = socket.id;
     let _roomsid = socket.roomsid;
+    let _clientID = romfunction.roomidx(_socketid);
+    let idThangBiAnbai;
+    if(romfunction.roomidx(_socketid) == 0) idThangBiAnbai =1;
+    else idThangBiAnbai =0;
 
     if (_roomsid != null) {
       playcard.userID = _socketid;
       playcard.action = 'between';
-      //var last = arr.pop(); 
-      let last = playcard.mess.users[romfunction.roomidx(_socketid)].cardTurn.pop(); 
-      playcard.mess.users[romfunction.roomidx(_socketid)].cards.push(last);
+
+      let last = playcard.mess.users[idThangBiAnbai].cardTurn.pop(); 
+      playcard.mess.users[_clientID].cards.push(last);
 
       let playcarddata = playcard;
       io.in(_roomsid).emit('play-card', playcarddata);
     }
 
   })
-  socket.on("tao-room", function (data) {
-    let checkroom = romfunction.checkRooms();
-    if (checkroom[0]) {
-      let idz = checkroom[2];
 
-      socket.join(checkroom[1].phong);
-
-      socket.phong = checkroom[1].phong;
-      roomsGame[idz].id.push(socket.id);
-      let returnRoom = roomsGame[idz];
-      returnRoom.idsend = socket.id;
-      returnRoom.myid = socket.id;
-      let idc = romfunction.getRoom(idz, returnRoom.id[0])
-      socket.emit("tao-room-return", returnRoom);
-      //io.sockets.in(socket.phong).emit("tao-room-return", returnRoom);
-      // gui cho id cu the
-      io.to(returnRoom.id[0]).emit("tao-room-return", idc);
-      // gui cho tat ca id con lai socket.broadcast.emit
-
-    } else {
-      let ran = Math.floor(Math.random() * 10) + "" + (Math.random() + 1).toString(36).substring(7);
-
-      socket.join(ran);
-      socket.phong = ran;
-
-      var obj = new Object();
-      obj.phong = socket.phong;
-      obj.id = [];
-      obj.id.push(socket.id);
-      //obj.idchuphong = socket.id;
-      obj.idsend = socket.id;
-      obj.myid = socket.id;
-      obj.gamePlay = [];
-      for (let i = 0; i < 10; i++) {
-        obj.gamePlay[i] = [];
-        for (let j = 0; j < 20; j++) {
-          obj.gamePlay[i][j] = 0;
-        }
-
-      }
-      roomsGame.push(obj);
-      socket.emit("tao-room-return", roomsGame[roomsGame.length - 1]);
-    }
-
-  })
   socket.on("disconnect", function () {
     console.log("Ngat ket noi " + socket.id);
   })
 
-  socket.on("danh-co", function (data) {
-    io.sockets.in(socket.phong).emit("danh-co-return", socket.id)
-  })
 
-  socket.on("Client-send-data", function (data) {
-    console.log(socket.id + " gui len sv:  " + data);
-    io.sockets.emit("server-send-data", data + "888")
-  })
 })
