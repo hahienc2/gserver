@@ -164,6 +164,7 @@ io.on('connection', function (socket) {
             ],
             "turn": 0,
             "cardTurn": [],
+            "cardEat": [],
             "pairs": []
           },
           {
@@ -208,6 +209,7 @@ io.on('connection', function (socket) {
             ],
             "turn": 1,
             "cardTurn": [],
+            "cardEat": [],
             "pairs": []
           }
         ],
@@ -382,6 +384,7 @@ io.on('connection', function (socket) {
       for (let i = 0; i < listcard.length; i++) {
         if (listcard[i].type == data.type && listcard[i].value == data.value) {
           playcard.mess.users[romfunction.roomidx(_socketid)].cards.splice(i, 1);
+
           let cardt = data;
           playcard.mess.users[romfunction.roomidx(_socketid)].cardTurn.push(cardt);
               var objcheck = new Object();
@@ -389,10 +392,8 @@ io.on('connection', function (socket) {
               objcheck.card = cardt;
               playcard.check = objcheck;
 
-              console.log(_socketid + " danh bai");
-              console.log(data);
-
-
+            //  console.log(_socketid + " danh bai");
+           //   console.log(data);
 
         }
 
@@ -435,6 +436,7 @@ io.on('connection', function (socket) {
 
       let last = playcard.mess.users[idThangBiAnbai].cardTurn.pop(); 
       playcard.mess.users[_clientID].cards.push(last);
+      playcard.mess.users[_clientID].cardEat.push(last);
 
       // di chuyen bai trong cardTurn cho cân bằng
       // thằng ăn là thằng id _clientID
