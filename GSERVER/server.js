@@ -436,6 +436,16 @@ io.on('connection', function (socket) {
       let last = playcard.mess.users[idThangBiAnbai].cardTurn.pop(); 
       playcard.mess.users[_clientID].cards.push(last);
 
+      // di chuyen bai trong cardTurn cho cân bằng
+      // thằng ăn là thằng id _clientID
+      let cardturn1 = playcard.mess.users[idThangBiAnbai].cardTurn.length;
+      let cardturn0 = playcard.mess.users[_clientID].cardTurn.length;
+      if(cardturn1 < cardturn0){
+        let chuyencard = playcard.mess.users[_clientID].cardTurn.pop();
+        playcard.mess.users[idThangBiAnbai].cardTurn.push(chuyencard);
+      }
+      playcard.mess.users[idThangBiAnbai].cardTurn.length
+
       let playcarddata = playcard;
       io.in(_roomsid).emit('play-card', playcarddata);
     }
