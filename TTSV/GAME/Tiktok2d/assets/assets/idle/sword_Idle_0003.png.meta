@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "5d641c07-a27a-4274-b56e-82d15b9c9848",
+  "importer": "image",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 512,
+  "height": 512,
+  "platformSettings": {},
+  "subMetas": {
+    "sword_Idle_0003": {
+      "ver": "1.0.6",
+      "uuid": "5d641c07-a27a-4274-b56e-82d15b9c9848@6c48a",
+      "importer": "texture",
+      "rawTextureUuid": "5d641c07-a27a-4274-b56e-82d15b9c9848",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -31.5,
+      "offsetY": -43,
+      "trimX": 142,
+      "trimY": 218,
+      "width": 165,
+      "height": 162,
+      "rawWidth": 512,
+      "rawHeight": 512,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

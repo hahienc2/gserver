@@ -1,0 +1,55 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "sword_attack",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.08333333333333333,
+  "sample": 60,
+  "speed": 0.1,
+  "wrapMode": 2,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "d7efc4fe-0dfe-413b-8761-bf56791c1feb@6c48a"
+            }
+          },
+          {
+            "frame": 0.016666666666666666,
+            "value": {
+              "__uuid__": "2aed2374-e30f-4cc3-9521-cd0283955424@6c48a"
+            }
+          },
+          {
+            "frame": 0.03333333333333333,
+            "value": {
+              "__uuid__": "fd0714da-ae06-480c-976e-8c907b63ef2a@6c48a"
+            }
+          },
+          {
+            "frame": 0.05,
+            "value": {
+              "__uuid__": "3b484045-ad3f-4b41-aac0-cc1fbebfda7b@6c48a"
+            }
+          },
+          {
+            "frame": 0.06666666666666667,
+            "value": {
+              "__uuid__": "5d9cfa70-8e9a-42db-a951-585264a89b18@6c48a"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": [
+    {
+      "frame": 0.03333333333333333,
+      "func": "atkx",
+      "params": []
+    }
+  ]
+}

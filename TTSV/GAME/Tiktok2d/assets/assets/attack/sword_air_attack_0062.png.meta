@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "d7efc4fe-0dfe-413b-8761-bf56791c1feb",
+  "importer": "image",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 512,
+  "height": 512,
+  "platformSettings": {},
+  "subMetas": {
+    "sword_air_attack_0062": {
+      "ver": "1.0.6",
+      "uuid": "d7efc4fe-0dfe-413b-8761-bf56791c1feb@6c48a",
+      "importer": "texture",
+      "rawTextureUuid": "d7efc4fe-0dfe-413b-8761-bf56791c1feb",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -48.5,
+      "offsetY": -42.5,
+      "trimX": 98,
+      "trimY": 216,
+      "width": 219,
+      "height": 165,
+      "rawWidth": 512,
+      "rawHeight": 512,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

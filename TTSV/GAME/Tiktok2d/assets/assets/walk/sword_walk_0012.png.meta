@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "d6f1616c-1230-4a83-9634-f6ed2fb4b050",
+  "importer": "image",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 512,
+  "height": 512,
+  "platformSettings": {},
+  "subMetas": {
+    "sword_walk_0012": {
+      "ver": "1.0.6",
+      "uuid": "d6f1616c-1230-4a83-9634-f6ed2fb4b050@6c48a",
+      "importer": "texture",
+      "rawTextureUuid": "d6f1616c-1230-4a83-9634-f6ed2fb4b050",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": -11.5,
+      "offsetY": -39.5,
+      "trimX": 167,
+      "trimY": 211,
+      "width": 155,
+      "height": 169,
+      "rawWidth": 512,
+      "rawHeight": 512,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

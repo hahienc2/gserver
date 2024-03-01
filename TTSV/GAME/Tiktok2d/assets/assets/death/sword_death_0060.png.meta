@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "c65dd6f8-3a95-4474-bd9d-956b2df01383",
+  "importer": "image",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 512,
+  "height": 512,
+  "platformSettings": {},
+  "subMetas": {
+    "sword_death_0060": {
+      "ver": "1.0.6",
+      "uuid": "c65dd6f8-3a95-4474-bd9d-956b2df01383@6c48a",
+      "importer": "texture",
+      "rawTextureUuid": "c65dd6f8-3a95-4474-bd9d-956b2df01383",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 14.5,
+      "offsetY": -97,
+      "trimX": 161,
+      "trimY": 300,
+      "width": 219,
+      "height": 106,
+      "rawWidth": 512,
+      "rawHeight": 512,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
